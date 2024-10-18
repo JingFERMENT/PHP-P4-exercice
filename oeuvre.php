@@ -1,22 +1,22 @@
 <?php
     require 'header.php';
-    require 'oeuvres.php';
+    require 'bdd.php';
+
+    $pdo = connexion();
+
+    $id = $_GET['id'];
 
     // Si l'URL ne contient pas d'id, on redirige sur la page d'accueil
-    if(empty($_GET['id'])) {
+    if(empty($id)) {
         header('Location: index.php');
     }
 
-    $oeuvre = null;
-
-    // On parcourt les oeuvres du tableau afin de rechercher celle qui a l'id précisé dans l'URL
-    foreach($oeuvres as $o) {
-        // intval permet de transformer l'id de l'URL en un nombre (exemple : "2" devient 2)
-        if($o['id'] === intval($_GET['id'])) {
-            $oeuvre = $o;
-            break; // On stoppe le foreach si on a trouvé l'oeuvre
-        }
-    }
+    // requête SQL pour chercher une oeuvre en particulier
+    $sql = 'SELECT * FROM `oeuvres` WHERE id = :id; ';
+    $sth = $pdo->prepare($sql);
+    $sth->bindValue(':id', $id, PDO::PARAM_INT);
+    $sth->execute();
+    $oeuvre = $sth->fetch();
 
     // Si aucune oeuvre trouvé, on redirige vers la page d'accueil
     if(is_null($oeuvre)) {
