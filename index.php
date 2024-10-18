@@ -1,6 +1,6 @@
 <?php
     require 'header.php';
-    require 'oeuvres.php';
+    require 'bdd.php';
 ?>
 <div id="liste-oeuvres">
     <?php foreach($oeuvres as $oeuvre): ?>
