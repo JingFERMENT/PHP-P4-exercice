@@ -1,13 +1,6 @@
-# The ArtBox
-
-Ce projet contient : 
-* Le code initial du projet The ArtBox pour réaliser le projet 4 du parcours PHP/Symfony sur la branche `main`.
-* Les corrections des différentes étapes sur les branches `correction-etapeX` (avec X le numéro de l'étape).
-
-## Installation du projet
-
-Pour installer ce projet : 
-1. Télécharger le projet en cliquant sur le bouton "Code" ci-dessus puis "Download ZIP".
-2. Dézipper le projet et placez-le dans le dossier contenant vos projets PHP habituels.
-3. Ouvrir le projet dans le navigateur via l'adresse http://localhost/NOM_DU_DOSSIER (ou autre selon votre configuration)
-4. Ouvrir le projet dans votre IDE (exemple : VSCode) pour réaliser les prochaines étapes.
+# The ArtBox : le site web mis à jour avec une base de données.
+●	Les œuvres de la page d’accueil sont récupérées en base de données.
+●	La page de détail d’une œuvre récupère l’œuvre en question en base de données.
+●	Une redirection vers la page d’accueil se produit en cas d’accès à une œuvre inexistante en base de données.
+●	Ajouter une nouvelle œuvre à la liste des œuvres.
+●	Les cas d’erreur du formulaire sont traités, à savoir : titre vide, auteur vide, lien ne respectant pas le format classique d’une URL, description inférieure à 3 caractères.

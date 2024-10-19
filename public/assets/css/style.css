@@ -133,6 +133,13 @@ input[type="submit"] {
     padding: 7px;
 }
 
+.text-danger {
+    color: red;
+}
+
+.text-success {
+    color: green;
+}
 
 @media (max-width: 850px) {
     .oeuvre {
