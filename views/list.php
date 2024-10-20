@@ -5,12 +5,12 @@
         <article class="oeuvre">
             <a href="detail-ctrl.php?id=<?= $oeuvre['id'] ?>">
                 <?php if($oeuvre['id'] <= 15) { ?>
-                    <img src="/public/assets/<?=$oeuvre['image']?>" alt="<?= $oeuvre['title'] ?>">
+                    <img src="/public/assets/<?=$oeuvre['image_link']?>" alt="<?= $oeuvre['title'] ?>">
                 <?php }else{?>
-                    <img src="<?=$oeuvre['image']?>" alt="<?= $oeuvre['title'] ?>">
+                    <img src="<?=$oeuvre['image_link']?>" alt="<?= $oeuvre['title'] ?>">
                 <?php } ?> 
                 <h2><?= $oeuvre['title'] ?></h2>
-                <p class="description"><?= $oeuvre['artiste'] ?></p>
+                <p class="description"><?= $oeuvre['author'] ?></p>
             </a>
         </article>
     <?php endforeach; ?>

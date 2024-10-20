@@ -5,9 +5,9 @@ class Oeuvre
 {
 
     private ?int $id;
-    private string $image;
+    private string $image_link;
     private string $title;
-    private string $artiste;
+    private string $author;
     private string $description;
 
     //*************** ID ***************//
@@ -21,15 +21,15 @@ class Oeuvre
         $this->id = $id;
     }
 
-    //*************** IMAGE***************//
-    public function getImage(): string
+    //*************** IMAGE LINK***************//
+    public function getImageLink(): string
     {
-        return $this->image;
+        return $this->image_link;
     }
 
-    public function setImage(string $image)
+    public function setImageLink(string $image_link)
     {
-        $this->image = $image;
+        $this->image_link = $image_link;
     }
 
     //*************** Title ***************//
@@ -43,15 +43,15 @@ class Oeuvre
         $this->title = $title;
     }
 
-    //*************** Artiste ***************//
-    public function getArtiste(): string
+    //*************** Auhtor ***************//
+    public function getAuthor(): string
     {
-        return $this->artiste;
+        return $this->author;
     }
 
-    public function setArtiste(string $artiste)
+    public function setAuthor(string $author)
     {
-        $this->artiste = $artiste;
+        $this->author = $author;
     }
 
     //*************** Description ***************//
@@ -97,7 +97,6 @@ class Oeuvre
         $sth->execute();
         $data = $sth->fetch();
 
-        // On teste si data est vide.
         if (!$data) {
             throw new Exception('Erreur lors de la récupération de l\'oeuvre');
         } else {
@@ -113,18 +112,43 @@ class Oeuvre
     {
         $pdo = Database::connect();
 
-        $sql = 'INSERT INTO `oeuvres`(`image`, `title`, `artiste`, `description`) 
-        VALUES (:image, :title, :artiste, :description);';
+        $sql = 'INSERT INTO `oeuvres`(`image_link`, `title`, `auhtor`, `description`) 
+        VALUES (:image_link, :title, :author, :description);';
 
         $sth = $pdo->prepare($sql);
 
-        $sth->bindValue(':image', $this->getImage());
+        $sth->bindValue(':image_link', $this->getImageLink());
         $sth->bindValue(':title', $this->getTitle());
-        $sth->bindValue(':artiste', $this->getArtiste());
+        $sth->bindValue(':author', $this->getAuthor());
         $sth->bindValue(':description', $this->getDescription());
    
         $sth->execute();
-        return $sth->rowCount() > 0;
-        
+        return $sth->rowCount() > 0;  
+    }
+
+     /*
+     * Méthode permettant de vérifier s'il y a des doublons 
+     */
+
+    public static function exist($title, $author): bool
+    {
+        $pdo = Database::connect();
+
+        $sql = 'SELECT COUNT(*) AS `nbOfOeuvre` FROM `Oeuvres` WHERE `title` = :title and `author` = :author ';
+
+        $sth = $pdo->prepare($sql);
+
+        $sth->bindValue(':title', $title);
+        $sth->bindValue(':author', $author);
+
+        $sth->execute();
+
+        // fetchAll     => renvoyer toutes les lignes sous forme de tableau associatif
+        // fetch        => récupérer première ligne à trouver ()
+        // fetchColumn  => récupérer la valeur de la première colonne de chaque ligne.
+        $result = $sth->fetchColumn();
+
+        // Si le nombre de lignes correspondantes est supérieur à zéro, la valeur existe
+        return $result > 0;
     }
 }
