@@ -112,7 +112,7 @@ class Oeuvre
     {
         $pdo = Database::connect();
 
-        $sql = 'INSERT INTO `oeuvres`(`image_link`, `title`, `auhtor`, `description`) 
+        $sql = 'INSERT INTO `oeuvres`(`image_link`, `title`, `author`, `description`) 
         VALUES (:image_link, :title, :author, :description);';
 
         $sth = $pdo->prepare($sql);

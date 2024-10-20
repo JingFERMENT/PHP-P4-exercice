@@ -16,8 +16,10 @@ try {
         if(empty($title)) {
             $error['title'] = 'Le titre est obligatoire.';
         } 
+
+     
     
-        // artiste
+        // author
         $author = filter_input(INPUT_POST, 'author', FILTER_SANITIZE_SPECIAL_CHARS);
     
         if(empty($author)) {
@@ -47,12 +49,14 @@ try {
 
         // vérifier s'il y a des doublons d'oeuvre
           $existDuplicate = Oeuvre::Exist($title, $author);
+         
           
           if ($existDuplicate) {
               $error['duplicate'] = 'Cette oeuvre existe déjà.';
             
           } 
     
+        
         // si tout est OK, enregistrement en base de données
         if(empty($error)){
             $oeuvreObj = new Oeuvre();
@@ -60,10 +64,9 @@ try {
             $oeuvreObj->setAuthor($author);
             $oeuvreObj->setDescription($description);
             $oeuvreObj->setTitle($title);
-    
+
             $insertOeuvre = $oeuvreObj->insert();
-           
-    
+         
            if($insertOeuvre){
                 $msg = 'Votre œuvre a bien été ajouté.';
                 $_SESSION['msg'] = $msg;
