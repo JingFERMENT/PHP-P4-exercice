@@ -50,10 +50,8 @@ try {
         // vérifier s'il y a des doublons d'oeuvre
           $existDuplicate = Oeuvre::Exist($title, $author);
          
-          
           if ($existDuplicate) {
               $error['duplicate'] = 'Cette oeuvre existe déjà.';
-            
           } 
     
         

@@ -4,7 +4,7 @@ require_once(__DIR__ . '/../helpers/connect.php');
 class Oeuvre
 {
 
-    private ?int $id;
+    private int $id;
     private string $image_link;
     private string $title;
     private string $author;
@@ -68,7 +68,7 @@ class Oeuvre
     /*
      * Méthode permettant de récupérer toutes les oeuvres
      */
-    public static function getAll(): array | false
+    public static function getAll(): array
     {
 
         $pdo = Database::connect();
@@ -87,7 +87,7 @@ class Oeuvre
     /*
      * Méthode permettant de récupérer une oeuvre
      */
-    public static function getOne(int $id):array |false
+    public static function getOne(int $id):array
     {
         $pdo = Database::connect();
         
