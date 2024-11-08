@@ -98,7 +98,7 @@ class Oeuvre
         $data = $sth->fetch();
 
         if (!$data) {
-            throw new Exception('Erreur lors de la récupération de l\'oeuvre');
+            throw new Exception('La page que vous cherchez n\'existe pas.');
         } else {
             return $data;
         }

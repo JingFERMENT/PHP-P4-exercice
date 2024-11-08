@@ -10,11 +10,11 @@
 </head>
 <body>
 <header>
-    <a href="/controllers/list-ctrl.php"><img src="/public/assets/img/logo.png" alt="Logo Artbox" id="logo"></a>
+    <a href="/accueil"><img src="/public/assets/img/logo.png" alt="Logo Artbox" id="logo"></a>
     <nav>
         <ul>
-            <li><a href="/controllers/list-ctrl.php">Accueil</a></li>
-            <li><a href="/controllers/add-ctrl.php">Ajouter une œuvre</a></li>
+            <li><a href="/accueil">Accueil</a></li>
+            <li><a href="/ajouter">Ajouter une œuvre</a></li>
         </ul>
     </nav>
 </header>

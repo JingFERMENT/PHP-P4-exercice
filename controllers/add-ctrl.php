@@ -8,7 +8,6 @@ try {
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         $error = [];
-    
         // validation des données pour le titre
         // titre 
         $title = filter_input(INPUT_POST, 'title', FILTER_SANITIZE_SPECIAL_CHARS);
@@ -73,22 +72,21 @@ try {
                 header('Location: detail-ctrl.php?id='.$id);
                 exit();
            } else {
-                $msg = 'Erreur, la donnée n\'a pas été insérée. Veuillez réessayer.';
+                $errormsg = 'Erreur, l\'oeuvre n\'a pas été inséré. Veuillez réessayer.';
            }   
         }
     }
 } catch (Throwable $e) {
     // Handle errors
-    $error = $e->getMessage();
-    include __DIR__ . '/../views/templates/header.php';
-    include __DIR__ . '/../views/templates/error.php';
-    include __DIR__.'/../views/templates/footer.php';
-    die;
+    $errormsg = $e->getMessage();
+    // include __DIR__ . '/../views/templates/header.php';
+    // include __DIR__ . '/../views/templates/error.php';
+    // include __DIR__.'/../views/templates/footer.php';
+    // die;
 }
-
 
 // views
 include __DIR__.'/../views/templates/header.php';
-include __DIR__.'/../views/add.php';
+include __DIR__.'/../views/' . (isset($errormsg) ? 'error' : 'add').'.php';
 include __DIR__.'/../views/templates/footer.php';
 

@@ -3,7 +3,7 @@
     // Loop through each item in the $oeuvres array
     foreach ($oeuvres as $oeuvre): ?>
         <article class="oeuvre">
-            <a href="detail-ctrl.php?id=<?= $oeuvre['id'] ?>">
+            <a href="detail/<?= $oeuvre['id'] ?>">
                 <?php if($oeuvre['id'] <= 15) { ?>
                     <img src="/public/assets/<?=$oeuvre['image_link']?>" alt="<?= $oeuvre['title'] ?>">
                 <?php }else{?>
