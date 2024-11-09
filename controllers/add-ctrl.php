@@ -16,8 +16,6 @@ try {
             $error['title'] = 'Le titre est obligatoire.';
         } 
 
-     
-    
         // author
         $author = filter_input(INPUT_POST, 'author', FILTER_SANITIZE_SPECIAL_CHARS);
     
@@ -53,7 +51,6 @@ try {
               $error['duplicate'] = 'Cette oeuvre existe déjà.';
           } 
     
-        
         // si tout est OK, enregistrement en base de données
         if(empty($error)){
             $oeuvreObj = new Oeuvre();
