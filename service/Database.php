@@ -26,9 +26,11 @@ class Database
 
             } catch (\Throwable $e) {
                 // Gestion des erreurs avec des messages personnalisés
-                echo "Impossible de se connecter à la base de données. Veuillez vérifier vos paramètres de connexion.";
-                error_log("Erreur de connexion PDO : " . $e->getMessage());
-                die;
+                // echo "Impossible de se connecter à la base de données. Veuillez vérifier vos paramètres de connexion.";
+                
+                error_log("Erreur de connexion PDO : " . $e->getCode());
+                
+               
             }
            
         }

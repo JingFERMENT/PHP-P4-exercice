@@ -1,4 +1,4 @@
-<?php include(__DIR__.'/views/templates/header.php');?>
+<?php include(__DIR__.'/views/composants/header.php');?>
 
 <div class="error-bloc">
     <h1>Erreur 404</h1>

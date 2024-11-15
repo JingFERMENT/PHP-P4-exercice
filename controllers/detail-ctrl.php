@@ -21,14 +21,10 @@ try {
 } catch (\Throwable $e) {
     //throw $e;
     $errormsg = $e->getMessage();
-    // include __DIR__ . '/../views/templates/header.php';
-    // include __DIR__ . '/../views/templates/error.php';
-    // include __DIR__.'/../views/templates/footer.php';
-    // die;
 }
 
 
 // views
-include __DIR__ . '/../views/templates/header.php';
+include __DIR__ . '/../views/composants/header.php';
 include __DIR__ . '/../views/' . (isset($errormsg) ? 'error' : 'detail') . '.php';
-include __DIR__ . '/../views/templates/footer.php';
+include __DIR__ . '/../views/composants/footer.php';

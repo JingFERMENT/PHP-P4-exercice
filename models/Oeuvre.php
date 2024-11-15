@@ -1,5 +1,5 @@
 <?php
-require_once(__DIR__ . '/../helpers/connect.php');
+require_once(__DIR__ . '/../service/Database.php');
 
 class Oeuvre
 {
